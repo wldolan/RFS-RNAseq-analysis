@@ -1,0 +1,21 @@
+#prepare annotation file
+TAIR10fun<-(read.csv("./references/TAIR10_functional_descriptions2.csv"))
+TAIR10fun$Model_name<-make.names(TAIR10fun$Model_name, unique=TRUE)
+TAIR10fun<-data.frame(TAIR10fun, row.names=1)
+
+
+##gene expression data
+expr<-read.csv("./prelim results/allpairwise_WT.csv")
+expr<-data.frame(expr, row.names=1)
+
+#merge gene list and expr data
+merged<-merge(table, expr, all.x=TRUE, by=0)
+merged<-data.frame(merged, row.names=1)
+
+
+##add annotations
+
+annotated<-merge(merged, TAIR10fun, all.x=TRUE, by=0)
+
+
+write.csv(annotated, "./restored_allrfs_annot.csv")
