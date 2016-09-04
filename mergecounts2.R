@@ -3,7 +3,7 @@
 ## last updated 2016-03-09
 
 #set working directory
-setwd("/Users/whitneydolan/Documents/ChappleLab/temp/results_round3/countfiles/")
+setwd()
 
 #Combine with Reduce to merge lists
 #Reduce(ManyMerge, list)
